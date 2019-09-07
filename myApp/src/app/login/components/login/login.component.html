@@ -1,0 +1,32 @@
+<form [formGroup]="loginForm" class="loginForm" (ngSubmit)="login()">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="alert alert-danger" role="alert" *ngIf="invalidLogin">
+            Username/Password invalid. Please try again
+          </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input formControlName="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
+        <div *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid">
+          <div *ngIf="loginForm.controls['email'].hasError('required')" class="err-msg">{{appConst.VALIDATION_MSG.EMAIL_REUIRED}}</div>
+          <div *ngIf="loginForm.controls['email'].hasError('email') || loginForm.controls['email'].hasError('pattern')" class="err-msg">*Enter valid email</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input formControlName="password" type="password" class="form-control" placeholder="Password">
+        <div *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
+          <div *ngIf="loginForm.controls['password'].hasError('required')">
+            <p [ngStyle]="{'color' : 'red'}">*Password field is required</p>
+          </div>
+          <div *ngIf="loginForm.controls['password'].hasError('minlength')">
+            <p class="err-msg">*Password must be at least 8 characters long</p>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Submit</button>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</form>

@@ -1,0 +1,19 @@
+ <!-- Fixed navbar -->
+ <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a href="javascript:void(0)" class="nav-link" (click)="menuRedirection('login')">Login</a>
+        </li>
+        <li class="nav-item active">
+          <a href="javascript:void(0)" class="nav-link" (click)="menuRedirection('home')">Form</a>
+        </li>
+        <li class="nav-item active">
+          <a href="javascript:void(0)" class="nav-link" (click)="menuRedirection('list')">List</a>
+        </li>
+        <li *ngIf = "auth.loggedIn" class="nav-item active">
+          <a href="javascript:void(0)" class="nav-link" (click)="logOut()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
